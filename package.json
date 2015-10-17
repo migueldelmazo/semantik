@@ -1,0 +1,36 @@
+{
+  "name": "semantik",
+  "version": "1.0.0",
+  "description": "Iterate over arrays and objects semantically, assigning values, validating and parsing",
+  "keywords": [
+    "semantic",
+    "declarative",
+    "iterate",
+    "object",
+    "json",
+    "array",
+    "compose",
+    "validate",
+    "parse"
+  ],
+  "author": {
+    "name": "Miguel del Mazo",
+    "email": "info@migueldelmazo.com"
+  },
+  "license": "GNU",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/migueldelmazo/semantik"
+  },
+  "bugs": {
+    "url": "https://github.com/migueldelmazo/semantik/issues",
+    "email": "info@migueldelmazo.com"
+  },
+  "main": "src/semantik.js",
+  "scripts": {
+    "examples": "node examples/composeArray.js & node examples/composeObject.js & node examples/parseObject.js & node examples/validateObject.js"
+  },
+  "dependencies": {
+    "lodash": "3.10.1"
+  }
+}
