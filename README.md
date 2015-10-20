@@ -34,6 +34,11 @@ Returns `true` if all functions of the object `semantik` returns `true`, when th
     semantik.validate(source, { 'products[].name': 'isString' });
     // true
 
+You can use the pseudo-method `isRequired` to ensure that a property exists on the object `source`.
+
+    semantik.validate(source, { 'products[].asdf': 'isRequired' });
+    // false
+
 ####semantik.parse(source, semantik);
 Returns a copy of the object `source`, modified by the functions of the object `semantik`. The functions of object `semantik` must return a value.
 
