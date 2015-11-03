@@ -123,7 +123,7 @@ var _ = require('lodash'),
           callbacksArr.push({ cb: module.exports[callback] });
         } else if (_.isPlainObject(callback)) {
           // check if is a plain object
-          callbacksArr.push({ cb: callback.cb, params: callback.params, ctx: callback.ctx });
+          callbacksArr.push({ cb: getCallback(callback.cb), params: callback.params, ctx: callback.ctx });
         } else if (_.isFunction(callback)) {
           // check if is a function
           callbacksArr.push({ cb: callback });
@@ -132,6 +132,10 @@ var _ = require('lodash'),
       }, []);
       return attrsObj;
     }, {});
+  },
+
+  getCallback = function (callback) {
+    return _.isString(callback) && _.isFunction(module.exports[callback]) ? module.exports[callback] : callback;
   },
 
   getParams = function (value, params) {
