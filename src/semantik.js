@@ -6,10 +6,20 @@ var _ = require('lodash'),
 
   compose = function (obj, attrs) {
     // return the composed attributes with their values
-    return _.reduce(attrs, function (memo, value, attr) {
+    return _.reduce(composeAttrs(attrs), function (memo, value, attr) {
       composeAttr(memo, obj, attr, value);
       return memo;
     }, {});
+  },
+
+  composeAttrs = function (attrs) {
+    if (_.isArray(attrs)) {
+      attrs = _.reduce(attrs, function (memo, attr) {
+        memo[attr] = _.identity;
+        return memo;
+      }, {});
+    }
+    return _.isPlainObject(attrs) ? attrs : {};
   },
 
   composeAttr = function (composedAttrs, obj, attr, value) {
@@ -39,7 +49,7 @@ var _ = require('lodash'),
   composeAddNewAttr = function (composedAttrs, obj, attr, value) {
     //check if is valid and exists attr
     if (attr.indexOf('[]') < 0 && _.has(obj, attr)) {
-      composedAttrs[attr] = value;
+      composedAttrs[attr] = _.isFunction(value) ? value(_.get(obj, attr), attr, obj) : value;
     }
   },
 
@@ -113,6 +123,56 @@ var _ = require('lodash'),
     });
   },
 
+  // pick methods
+
+  pick = function (obj, attrsKeys) {
+    var attrs = pickGetAttrs(attrsKeys),
+      composedObj = compose(obj, attrs);
+    return pickGetResult(obj, composedObj);
+  },
+
+  pickGetAttrs = function (attrsKeys) {
+    return _.transform(attrsKeys, function (memo, attrsKey) {
+      memo[attrsKey] = '';
+    }, {});
+  },
+
+  pickGetResult = function (obj, composedObj) {
+    return _.transform(composedObj, function (memo, value, key) {
+      _.set(memo, key, _.get(obj, key));
+    }, initObjType(obj));
+  },
+
+  // transform keys
+
+  mapKeys = function (obj, transformObj) {
+    return _.transform(compose(obj, transformObj), function (result, composedValue, composedKey) {
+      var transformKeyRegex = mapKeysFindRegex(composedKey, transformObj),
+        matched = composedKey.match(transformKeyRegex),
+        newKey = transformKeyRegex && matched ? mapKeysGetNewKey(matched, composedValue) : composedKey;
+      _.set(result, newKey, _.get(obj, composedKey));
+    }, initObjType(obj));
+  },
+
+  mapKeysFindRegex = function (composedKey, transformObj) {
+    var regex;
+    return _.findKey(transformObj, function (transformValue, transformKey) {
+      regex = mapKeysGetRegex(transformKey);
+      return !!composedKey.match(regex);
+    }) ? regex : null;
+  },
+
+  mapKeysGetRegex = function (src) {
+    return new RegExp(src.replace(/\[\]/g, '\\[(\\d)\\]').replace(/\./g, '\\.'));
+  },
+
+  mapKeysGetNewKey = function (matched, composedValue) {
+    return _.reduce(_.rest(matched), function (memo, digit) {
+      memo = memo.replace('[]', '[' + digit + ']');
+      return memo;
+    }, composedValue);
+  },
+
   // helpers
 
   ensureAttrs = function (attrs) {
@@ -150,6 +210,10 @@ var _ = require('lodash'),
 
   parseArray = function (arr) {
     return _.isArray(arr) ? arr : [arr];
+  },
+
+  initObjType = function (obj) {
+    return _.isArray(obj) ? [] : {};
   };
 
 module.exports = {
@@ -157,6 +221,10 @@ module.exports = {
   compose: compose,
 
   parse: parse,
+
+  pick: pick,
+
+  mapKeys: mapKeys,
 
   validate: validate,
 
