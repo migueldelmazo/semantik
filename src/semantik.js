@@ -167,7 +167,7 @@ var _ = require('lodash'),
   },
 
   mapKeysGetNewKey = function (matched, composedValue) {
-    return _.reduce(_.rest(matched), function (memo, digit) {
+    return _.reduce(_.tail(matched), function (memo, digit) {
       memo = memo.replace('[]', '[' + digit + ']');
       return memo;
     }, composedValue);
