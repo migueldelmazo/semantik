@@ -232,8 +232,8 @@ module.exports = {
 
   mixin: function (mixin) {
     _.each(mixin, function (callback, key) {
-      this[key] = callback;
-    }, this);
+      module.exports[key] = callback;
+    });
   },
 
   // parse helpers
