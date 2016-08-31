@@ -163,7 +163,7 @@ var _ = require('lodash'),
   },
 
   mapKeysGetRegex = function (src) {
-    return new RegExp(src.replace(/\[\]/g, '\\[(\\d)\\]').replace(/\./g, '\\.'));
+    return new RegExp(src.replace(/\[\]/g, '\\[(\\d+)\\]').replace(/\./g, '\\.'));
   },
 
   mapKeysGetNewKey = function (matched, composedValue) {
