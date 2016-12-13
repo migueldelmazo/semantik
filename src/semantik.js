@@ -118,7 +118,7 @@ var _ = require('lodash'),
   validateCheckValue = function (obj, callbacks, attr) {
     // iterate the callbacks checking its value
     var value = _.get(obj, attr);
-    return _.every(callbacks, function (callback, idx) {
+    return _.every(callbacks, function (callback) {
       return callback.cb.apply(callback.ctx, getParams(value, callback.params));
     });
   },

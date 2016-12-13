@@ -1,18 +1,17 @@
-'use strict';
+/* global test, expect */
+const semantik = require('../src/semantik'),
 
-var semantik = require('../src/semantik'),
-
-  isBetween5And25 = function (value) {
+  isBetween5And25 = (value) => {
     value = parseInt(value, 10);
-    return 5 < value && value < 25;
+    return value > 5 && value < 25;
   },
 
-  isBetweenWithArray = function (value, min, max) {
+  isBetweenWithArray = (value, min, max) => {
     value = parseInt(value, 10);
     return min < value && value < max;
   },
 
-  isBetweenWithObject = function (value, limits) {
+  isBetweenWithObject = (value, limits) => {
     value = parseInt(value, 10);
     return limits.min < value && value < limits.max;
   },
@@ -37,15 +36,23 @@ var semantik = require('../src/semantik'),
     'products[].price': [
       'isStringNumber',
       isBetween5And25,
-      { cb: isBetweenWithArray, params: [ 5, 25 ] },
-      { cb: isBetweenWithObject, params: { min: 5, max: 25 } }
+      {
+        cb: isBetweenWithArray,
+        params: [5, 25]
+      },
+      {
+        cb: isBetweenWithObject,
+        params: {
+          min: 5,
+          max: 25
+        }
+      }
     ],
     'products[].units': 'isNumber'
   };
 
-console.log(
-  'is valid?',
-  semantik.validate(sourceObject, semantikObject)
-);
-
-// true
+test('semantik: validate', () => {
+  const result = semantik.validate(sourceObject, semantikObject);
+  // console.log('Expected result:', result);
+  expect(result).toBe(true);
+});
