@@ -94,8 +94,6 @@ Returns a copy of the object `source`, modified by the functions of the object `
 
 `semantik.parseCamelCase(value)`
 
-`semantik.sortBy(value, predicate)`
-
 `semantik.isArray(value)`
 
 `semantik.isEmpty(value)`

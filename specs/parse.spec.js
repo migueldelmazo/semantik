@@ -1,5 +1,5 @@
 /* global test, expect */
-const semantik = require('../src/semantik'),
+const semantik = require('../src/index'),
 
   inc = (value) => value + 1,
 
@@ -27,11 +27,11 @@ const semantik = require('../src/semantik'),
     'products[].name': [reverseWords, 'parseCamelCase'],
     'products[].price': [parseFloat, inc, inc, inc],
     'products[].units': [parseInt, 'parseString']
-  };
+  },
+
+  result = semantik.parse(sourceObject, semantikObject);
 
 test('semantik: parse', () => {
-  const result = semantik.parse(sourceObject, semantikObject);
-  // console.log('Expected result', result);
   expect(result.products[0].name).toBe('patternsDesignJsNode');
   expect(result.products[0].price).toBe(13);
   expect(result.products[0].units).toBe('1');

@@ -21,7 +21,7 @@
       "never"
     ],
     "array-callback-return": "error",
-    "arrow-body-style": "error",
+    "arrow-body-style": "off",
     "arrow-parens": "error",
     "arrow-spacing": "error",
     "block-scoped-var": "error",
@@ -220,7 +220,7 @@
     ],
     "operator-linebreak": [
       "error",
-      "after"
+      "before"
     ],
     "padded-blocks": "off",
     "prefer-arrow-callback": "off",

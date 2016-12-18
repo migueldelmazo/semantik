@@ -1,5 +1,5 @@
 /* global test, expect */
-const semantik = require('../src/semantik'),
+const semantik = require('../src/index'),
 
   isBetween5And25 = (value) => {
     value = parseInt(value, 10);
@@ -49,10 +49,10 @@ const semantik = require('../src/semantik'),
       }
     ],
     'products[].units': 'isNumber'
-  };
+  },
+
+  result = semantik.validate(sourceObject, semantikObject);
 
 test('semantik: validate', () => {
-  const result = semantik.validate(sourceObject, semantikObject);
-  // console.log('Expected result:', result);
   expect(result).toBe(true);
 });

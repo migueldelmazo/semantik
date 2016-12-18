@@ -1,10 +1,8 @@
 /* global test, expect */
-const semantik = require('../src/semantik'),
+const semantik = require('../src/index'),
 
   sourceObject = {
-    user: {
-      email: 'info@migueldelmazo.com'
-    },
+    user: { email: 'info@migueldelmazo.com' },
     address: {
       street: 'Calle Castellana 1',
       city: 'Madrid'
@@ -35,11 +33,11 @@ const semantik = require('../src/semantik'),
     'products[].name': 'products[].productName',
     'products[].price': 'data.products[].price',
     'products[].options': 'data.products[].options'
-  };
+  },
+
+  result = semantik.mapKeys(sourceObject, semantikObject);
 
 test('semantik: pick', () => {
-  const result = semantik.mapKeys(sourceObject, semantikObject);
-  console.log('Expected result', result);
   expect(result.userEmail).toBe('info@migueldelmazo.com');
   expect(result.addressStreet).toBe('Calle Castellana 1');
   expect(result.addressCity).toBe('Madrid');

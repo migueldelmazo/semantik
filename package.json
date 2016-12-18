@@ -7,7 +7,7 @@
     "collectCoverage": true,
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
-      "src/*"
+      "src/**"
     ],
     "coverageThreshold": {
       "global": {

@@ -1,5 +1,5 @@
 /* global test, expect */
-const semantik = require('../src/semantik'),
+const semantik = require('../src/index'),
 
   sourceObject = [
     {
@@ -24,11 +24,11 @@ const semantik = require('../src/semantik'),
     '[].price': 'product price',
     '[].units': 'product units',
     '[].options[]': 'an option'
-  };
+  },
+
+  result = semantik.compose(sourceObject, semantikObject);
 
 test('semantik: compose array', () => {
-  const result = semantik.compose(sourceObject, semantikObject);
-  // console.log('Expected result', result);
   expect(result['[0].name']).toBe('product name');
   expect(result['[0].price']).toBe('product price');
   expect(result['[0].units']).toBe('product units');

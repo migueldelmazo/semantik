@@ -1,10 +1,8 @@
 /* global test, expect */
-const semantik = require('../src/semantik'),
+const semantik = require('../src/index'),
 
   sourceObject = {
-    user: {
-      email: 'info@migueldelmazo.com'
-    },
+    user: { email: 'info@migueldelmazo.com' },
     address: {
       street: 'Calle Castellana 1',
       city: 'Madrid'
@@ -34,11 +32,11 @@ const semantik = require('../src/semantik'),
     'products[].name',
     'products[].price',
     'products[].options'
-  ];
+  ],
+
+  result = semantik.pick(sourceObject, semantikObject);
 
 test('semantik: pick', () => {
-  const result = semantik.pick(sourceObject, semantikObject);
-  // console.log('Expected result', result);
   expect(result.user.email).toBe('info@migueldelmazo.com');
   expect(result.address.city).toBe('Madrid');
   expect(result.products[0].name).toBe('Node JS Design Patterns');
