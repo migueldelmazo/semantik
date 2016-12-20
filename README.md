@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/migueldelmazo/semantik.svg?branch=actions)](https://travis-ci.org/migueldelmazo/semantik)
+
 #SemantiK
 
 This is a library to iterate over arrays and objects semantically, assigning values, validating and parsing. From an object, JSON or array we can create another object using a declarative and semantic function.
