@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/migueldelmazo/semantik.svg?branch=actions)](https://travis-ci.org/migueldelmazo/semantik)
+[![Test Coverage](https://codeclimate.com/github/migueldelmazo/semantik/badges/coverage.svg)](https://codeclimate.com/github/migueldelmazo/semantik/coverage)
 
 #SemantiK
 
