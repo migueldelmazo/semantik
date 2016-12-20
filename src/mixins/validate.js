@@ -11,7 +11,7 @@ mixins.add('isNumberGreatThan', (value, min, equal) => {
 });
 
 mixins.add('isNumberLessThan', (value, max, equal) => {
-  return equal === false ? value > max : value >= max;
+  return equal === false ? max > value : max >= value;
 });
 
 mixins.add('isNumberBetween', (value, min, max, equal) => {

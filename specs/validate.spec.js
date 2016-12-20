@@ -17,6 +17,7 @@ const semantik = require('../src/index'),
   },
 
   sourceObject = {
+    user: { email: 'info@migueldelmazo.com' },
     products: [
       {
         name: 'Node JS Design Patterns',
@@ -32,10 +33,35 @@ const semantik = require('../src/index'),
   },
 
   semantikObject = {
+    'user.email': ['isEmail', 'isNotEmpty', 'isRequired'],
     'products[].name': ['isStringNotEmpty', 'isString'],
     'products[].price': [
       'isStringNumber',
       isBetween5And25,
+      {
+        cb: 'isNumberGreatThan',
+        params: [5]
+      },
+      {
+        cb: 'isNumberGreatThan',
+        params: [5, false]
+      },
+      {
+        cb: 'isNumberLessThan',
+        params: [25]
+      },
+      {
+        cb: 'isNumberLessThan',
+        params: [25, false]
+      },
+      {
+        cb: 'isNumberBetween',
+        params: [5, 25]
+      },
+      {
+        cb: 'isNumberBetween',
+        params: [5, 25, false]
+      },
       {
         cb: isBetweenWithArray,
         params: [5, 25]

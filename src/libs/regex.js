@@ -4,10 +4,6 @@ const
     list[key] = regex;
   },
 
-  exists = (key) => key in list,
-
-  get = (key) => list[key],
-
   list = {};
 
-module.exports = { add, exists, get, list };
+module.exports = { add, list };

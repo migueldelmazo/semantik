@@ -15,7 +15,7 @@ const
 
   validateCheckRequires = (attrs, composedAttrs) => {
     const composedKeys = _.keys(composedAttrs),
-      requiredAttrs = _.pick(attrs, (callbacks) => {
+      requiredAttrs = _.pickBy(attrs, (callbacks) => {
         // get required attributes
         return mixins.list.parseArray(callbacks).indexOf('isRequired') >= 0;
       });

@@ -7,7 +7,7 @@ const
   ensureSemantikAttrs = (attrs) => {
     return _.reduce(attrs, (attrsObj, callbacks, key) => {
       attrsObj[key] = _.reduce(mixins.list.parseArray(callbacks), (callbacksArr, callback) => {
-        if (_.isString(callback) && _.isFunction(mixins.list[callback])) {
+        if (_.isString(callback) && mixins.exists(callback)) {
           // check if is a function of this library
           callbacksArr.push({ cb: mixins.list[callback] });
         } else if (_.isPlainObject(callback)) {
@@ -28,7 +28,7 @@ const
   },
 
   getCallback = (callback) => {
-    return _.isString(callback) && _.isFunction(mixins.list[callback])
+    return _.isString(callback) && mixins.exists(callback)
       ? mixins.list[callback]
       : callback;
   },

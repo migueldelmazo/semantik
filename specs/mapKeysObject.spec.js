@@ -2,6 +2,7 @@
 const semantik = require('../src/index'),
 
   sourceObject = {
+    faa: 'foo',
     user: { email: 'info@migueldelmazo.com' },
     address: {
       street: 'Calle Castellana 1',
@@ -41,4 +42,11 @@ test('semantik: pick', () => {
   expect(result.userEmail).toBe('info@migueldelmazo.com');
   expect(result.addressStreet).toBe('Calle Castellana 1');
   expect(result.addressCity).toBe('Madrid');
+  expect(result.products[0].productName).toBe('Node JS Design Patterns');
+  expect(result.data.products[0].price).toBe('10');
+  expect(result.products[1].productName).toBe('T-Shirts NodeJS');
+  expect(result.data.products[1].price).toBe('20');
+  expect(result.data.products[1].options[0]).toBe('green and black');
+  expect(result.data.products[1].options[1]).toBe('xl');
+  expect(result.data.products[1].options[2]).toBe('polyester');
 });
