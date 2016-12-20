@@ -6,7 +6,7 @@ const
 
   parse = (obj, attrs) => {
     const clonedObj = _.cloneDeep(obj);
-    parseRunCallbacks(clonedObj, compose(clonedObj, common.ensureAttrs(attrs)));
+    parseRunCallbacks(clonedObj, compose(clonedObj, common.ensureSemantikAttrs(attrs)));
     return clonedObj;
   },
 

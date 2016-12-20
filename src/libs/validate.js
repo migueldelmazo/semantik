@@ -6,7 +6,7 @@ const
   mixins = require('./mixins'),
 
   validate = (obj, attrs) => {
-    const ensuredAttrs = common.ensureAttrs(attrs),
+    const ensuredAttrs = common.ensureSemantikAttrs(attrs),
       composedAttrs = compose(obj, ensuredAttrs);
     return validateCheckRequires(attrs, composedAttrs)
       ? validateRunCallbacks(obj, composedAttrs)

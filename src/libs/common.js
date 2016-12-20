@@ -4,7 +4,7 @@ const
 
   mixins = require('./mixins'),
 
-  ensureAttrs = (attrs) => {
+  ensureSemantikAttrs = (attrs) => {
     return _.reduce(attrs, (attrsObj, callbacks, key) => {
       attrsObj[key] = _.reduce(mixins.list.parseArray(callbacks), (callbacksArr, callback) => {
         if (_.isString(callback) && _.isFunction(mixins.list[callback])) {
@@ -50,7 +50,7 @@ const
 
 module.exports = {
 
-  ensureAttrs,
+  ensureSemantikAttrs,
   runCallback
 
 };
