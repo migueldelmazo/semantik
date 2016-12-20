@@ -1,7 +1,6 @@
 const
 
   _ = require('lodash'),
-  common = require('./common'),
   compose = require('./compose'),
   mixins = require('./mixins'),
 

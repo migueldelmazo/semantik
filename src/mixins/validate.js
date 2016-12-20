@@ -6,9 +6,13 @@ const
 
 mixins.add('isNotEmpty', (value) => !_.isEmpty(value));
 
-mixins.add('isNumberGreatThan', (value, min, equal) => equal === false ? min < value : min <= value);
+mixins.add('isNumberGreatThan', (value, min, equal) => {
+  return equal === false ? min < value : min <= value;
+});
 
-mixins.add('isNumberLessThan', (value, max, equal) => equal === false ? value > max : value >= max);
+mixins.add('isNumberLessThan', (value, max, equal) => {
+  return equal === false ? value > max : value >= max;
+});
 
 mixins.add('isNumberBetween', (value, min, max, equal) => {
   var _min = Math.min(min, max),
@@ -18,13 +22,13 @@ mixins.add('isNumberBetween', (value, min, max, equal) => {
 
 mixins.add('isStringNumber', (value) => !isNaN(value + ''));
 
-mixins.add('isArray', (value) => _.isArray);
+mixins.add('isArray', _.isArray);
 
-mixins.add('isEmpty', (value) => _.isEmpty);
+mixins.add('isEmpty', _.isEmpty);
 
-mixins.add('isNumber', (value) => _.isNumber);
+mixins.add('isNumber', _.isNumber);
 
-mixins.add('isString', (value) => _.isString);
+mixins.add('isString', _.isString);
 
 regex.add('isEmail', /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 

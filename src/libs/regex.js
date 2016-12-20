@@ -1,8 +1,8 @@
 const
 
-  _ = require('lodash'),
-
-  add = (key, regex) => list[key] = regex,
+  add = (key, regex) => {
+    list[key] = regex;
+  },
 
   exists = (key) => key in list,
 

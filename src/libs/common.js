@@ -5,14 +5,11 @@ const
   mixins = require('./mixins'),
 
   ensureAttrs = (attrs) => {
-    // todo: comprobar nombre de esta funcion
     return _.reduce(attrs, (attrsObj, callbacks, key) => {
       attrsObj[key] = _.reduce(mixins.list.parseArray(callbacks), (callbacksArr, callback) => {
         if (_.isString(callback) && _.isFunction(mixins.list[callback])) {
           // check if is a function of this library
-          callbacksArr.push({
-            cb: mixins.list[callback]
-          });
+          callbacksArr.push({ cb: mixins.list[callback] });
         } else if (_.isPlainObject(callback)) {
           // check if is a plain object
           callbacksArr.push({
@@ -22,9 +19,7 @@ const
           });
         } else if (_.isFunction(callback)) {
           // check if is a function
-          callbacksArr.push({
-            cb: callback
-          });
+          callbacksArr.push({ cb: callback });
         }
         return callbacksArr;
       }, []);

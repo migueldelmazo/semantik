@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "lint": "node_modules/.bin/eslint src/*.js specs/*.js",
+    "lint": "node_modules/.bin/eslint src/**/*.js specs/**/*.js",
     "test": "jest"
   },
   "jest": {
