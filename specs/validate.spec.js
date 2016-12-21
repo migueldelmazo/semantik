@@ -25,7 +25,7 @@ const semantik = require('../src/index'),
         units: 1
       },
       {
-        name: 'T-Shirts NodeJS',
+        name: 'T-Shirts Node JS',
         price: '20',
         units: 2
       }
@@ -36,8 +36,21 @@ const semantik = require('../src/index'),
     'user.email': ['isEmail', 'isNotEmpty', 'isRequired'],
     'products[].name': ['isStringNotEmpty', 'isString'],
     'products[].price': [
-      'isStringNumber',
+      // my custom methods
       isBetween5And25,
+      {
+        cb: isBetweenWithArray,
+        params: [5, 25]
+      },
+      {
+        cb: isBetweenWithObject,
+        params: {
+          min: 5,
+          max: 25
+        }
+      },
+      // semantik methods
+      'isStringNumber',
       {
         cb: 'isNumberGreatThan',
         params: [5]
@@ -61,17 +74,6 @@ const semantik = require('../src/index'),
       {
         cb: 'isNumberBetween',
         params: [5, 25, false]
-      },
-      {
-        cb: isBetweenWithArray,
-        params: [5, 25]
-      },
-      {
-        cb: isBetweenWithObject,
-        params: {
-          min: 5,
-          max: 25
-        }
       }
     ],
     'products[].units': 'isNumber'

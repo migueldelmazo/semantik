@@ -14,7 +14,7 @@ const semantik = require('../src/index'),
         units: 1
       },
       {
-        name: 'T-Shirts NodeJS',
+        name: 'T-Shirts Node JS',
         price: '20',
         units: 2,
         options: [

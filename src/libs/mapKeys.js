@@ -8,7 +8,7 @@ const
     return _.transform(compose(obj, transformObj), (result, composedValue, composedKey) => {
       const transformKeyRegex = mapKeysFindRegex(composedKey, transformObj),
         matched = composedKey.match(transformKeyRegex),
-        newKey = transformKeyRegex && matched ? mapKeysGetNewKey(matched, composedValue) : composedKey;
+        newKey = mapKeysGetNewKey(matched, composedValue);
       _.set(result, newKey, _.get(obj, composedKey));
     }, mixins.list.getObjType(obj));
   },

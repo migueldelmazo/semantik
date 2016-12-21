@@ -14,7 +14,7 @@ const semantik = require('../src/index'),
         units: 1
       },
       {
-        name: 'T-Shirts NodeJS',
+        name: 'T-Shirts Node JS',
         price: '20',
         units: 2,
         options: [
@@ -41,7 +41,7 @@ test('semantik: pick', () => {
   expect(result.address.city).toBe('Madrid');
   expect(result.products[0].name).toBe('Node JS Design Patterns');
   expect(result.products[0].price).toBe('10');
-  expect(result.products[1].name).toBe('T-Shirts NodeJS');
+  expect(result.products[1].name).toBe('T-Shirts Node JS');
   expect(result.products[1].price).toBe('20');
   expect(result.products[1].options[0]).toBe('green and black');
   expect(result.products[1].options[1]).toBe('xl');

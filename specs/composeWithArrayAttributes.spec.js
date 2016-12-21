@@ -3,12 +3,12 @@ const semantik = require('../src/index'),
 
   sourceObject = [
     {
-      name: 'NodeJS Design Patterns',
+      name: 'Node JS Design Patterns',
       price: 10,
       units: 1
     },
     {
-      name: 'T-Shirts NodeJS',
+      name: 'T-Shirts Node JS',
       price: 20,
       units: 2,
       options: [
@@ -29,10 +29,10 @@ const semantik = require('../src/index'),
   result = semantik.compose(sourceObject, semantikArray);
 
 test('semantik: compose with array attributes', () => {
-  expect(result['[0].name']).toBe('NodeJS Design Patterns');
+  expect(result['[0].name']).toBe('Node JS Design Patterns');
   expect(result['[0].price']).toBe(10);
   expect(result['[0].units']).toBe(1);
-  expect(result['[1].name']).toBe('T-Shirts NodeJS');
+  expect(result['[1].name']).toBe('T-Shirts Node JS');
   expect(result['[1].price']).toBe(20);
   expect(result['[1].units']).toBe(2);
   expect(result['[1].options[0]']).toBe('green and black');

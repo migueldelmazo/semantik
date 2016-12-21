@@ -8,7 +8,7 @@ const semantik = require('../src/index'),
       units: 1
     },
     {
-      name: 'T-Shirts NodeJS',
+      name: 'T-Shirts Node JS',
       price: '20',
       units: 2,
       options: [
@@ -30,7 +30,7 @@ const semantik = require('../src/index'),
 test('semantik: mapKeys array', () => {
   expect(result[0].productName).toBe('Node JS Design Patterns');
   expect(result[0].price).toBe('10');
-  expect(result[1].productName).toBe('T-Shirts NodeJS');
+  expect(result[1].productName).toBe('T-Shirts Node JS');
   expect(result[1].price).toBe('20');
   expect(result[1].options[0]).toBe('green and black');
   expect(result[1].options[1]).toBe('xl');

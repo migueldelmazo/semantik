@@ -16,7 +16,7 @@ const semantik = require('../src/index'),
         units: 1
       },
       {
-        name: 'T-Shirts NodeJS',
+        name: 'T-Shirts Node JS',
         price: '20',
         units: 2
       }
@@ -35,7 +35,7 @@ test('semantik: parse', () => {
   expect(result.products[0].name).toBe('patternsDesignJsNode');
   expect(result.products[0].price).toBe(13);
   expect(result.products[0].units).toBe('1');
-  expect(result.products[1].name).toBe('nodeJsTShirts');
+  expect(result.products[1].name).toBe('jsNodeTShirts');
   expect(result.products[1].price).toBe(23);
   expect(result.products[1].units).toBe('2');
 });

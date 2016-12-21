@@ -2,7 +2,6 @@
 const semantik = require('../src/index'),
 
   sourceObject = {
-    faa: 'foo',
     user: { email: 'info@migueldelmazo.com' },
     address: {
       street: 'Calle Castellana 1',
@@ -15,7 +14,7 @@ const semantik = require('../src/index'),
         units: 1
       },
       {
-        name: 'T-Shirts NodeJS',
+        name: 'T-Shirts Node JS',
         price: '20',
         units: 2,
         options: [
@@ -44,7 +43,7 @@ test('semantik: mapKeys object', () => {
   expect(result.addressCity).toBe('Madrid');
   expect(result.products[0].productName).toBe('Node JS Design Patterns');
   expect(result.data.products[0].price).toBe('10');
-  expect(result.products[1].productName).toBe('T-Shirts NodeJS');
+  expect(result.products[1].productName).toBe('T-Shirts Node JS');
   expect(result.data.products[1].price).toBe('20');
   expect(result.data.products[1].options[0]).toBe('green and black');
   expect(result.data.products[1].options[1]).toBe('xl');
