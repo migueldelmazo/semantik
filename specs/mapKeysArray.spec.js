@@ -27,7 +27,7 @@ const semantik = require('../src/index'),
 
   result = semantik.mapKeys(sourceObject, semantikObject);
 
-test('semantik: pick', () => {
+test('semantik: mapKeys array', () => {
   expect(result[0].productName).toBe('Node JS Design Patterns');
   expect(result[0].price).toBe('10');
   expect(result[1].productName).toBe('T-Shirts NodeJS');

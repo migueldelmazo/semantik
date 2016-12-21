@@ -38,7 +38,7 @@ const semantik = require('../src/index'),
 
   result = semantik.mapKeys(sourceObject, semantikObject);
 
-test('semantik: pick', () => {
+test('semantik: mapKeys object', () => {
   expect(result.userEmail).toBe('info@migueldelmazo.com');
   expect(result.addressStreet).toBe('Calle Castellana 1');
   expect(result.addressCity).toBe('Madrid');
