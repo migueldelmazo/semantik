@@ -1,12 +1,12 @@
 const
 
   _ = require('lodash'),
-  mixins = require('../libs/mixins');
+  semantik = require('../index');
 
-mixins.add('parseArray', (value) => {
+semantik.addMixin('parseArray', (value) => {
   return _.isArray(value) ? value : [value];
 });
 
-mixins.add('parseCamelCase', _.camelCase);
+semantik.addMixin('parseCamelCase', _.camelCase);
 
-mixins.add('parseString', (value) => value + '');
+semantik.addMixin('parseString', (value) => value + '');

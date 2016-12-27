@@ -3,6 +3,7 @@ const
   _ = require('lodash'),
   common = require('./common'),
   compose = require('./compose'),
+  run = require('./run'),
 
   parse = (obj, attrs) => {
     const clonedObj = _.cloneDeep(obj);
@@ -20,7 +21,7 @@ const
   parseGetCallbacksValue = (obj, attr, callbacks) => {
     // iterate the callbacks getting its value
     return _.reduce(callbacks, (value, callback) => {
-      return common.runCallback(callback, value);
+      return run(callback, value);
     }, _.get(obj, attr));
   };
 

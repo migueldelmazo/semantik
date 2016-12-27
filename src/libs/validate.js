@@ -3,7 +3,8 @@ const
   _ = require('lodash'),
   common = require('./common'),
   compose = require('./compose'),
-  mixins = require('./mixins'),
+  semantik = require('../index'),
+  run = require('./run'),
 
   validate = (obj, attrs) => {
     const ensuredAttrs = common.ensureSemantikAttrs(attrs),
@@ -17,7 +18,7 @@ const
     const composedKeys = _.keys(composedAttrs),
       requiredAttrs = _.pickBy(attrs, (callbacks) => {
         // get required attributes
-        return mixins.list.parseArray(callbacks).indexOf('isRequired') >= 0;
+        return semantik.parseArray(callbacks).indexOf('isRequired') >= 0;
       });
     return _.every(_.keys(requiredAttrs), (attr) => {
       // check required attributes with composed attributes
@@ -35,7 +36,7 @@ const
     // iterate the callbacks checking its value
     const value = _.get(obj, attr);
     return _.every(callbacks, (callback) => {
-      return common.runCallback(callback, value);
+      return callback === 'isRequired' ? true : run(callback, value);
     });
   };
 

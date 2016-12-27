@@ -2,7 +2,7 @@ const
 
   _ = require('lodash'),
   compose = require('./compose'),
-  mixins = require('./mixins'),
+  semantik = require('../index'),
 
   pick = function (obj, attrsKeys) {
     var attrs = pickGetAttrs(attrsKeys),
@@ -19,7 +19,7 @@ const
   pickGetResult = function (obj, composedObj) {
     return _.transform(composedObj, function (memo, value, key) {
       _.set(memo, key, _.get(obj, key));
-    }, mixins.list.getObjType(obj));
+    }, semantik.getObjType(obj));
   };
 
 module.exports = pick;

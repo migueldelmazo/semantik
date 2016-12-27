@@ -1,23 +1,18 @@
-const
+module.exports = {
 
-  compose = require('./libs/compose'),
-  mapKeys = require('./libs/mapKeys'),
-  mixins = require('./libs/mixins'),
-  parse = require('./libs/parse'),
-  pick = require('./libs/pick'),
-  validate = require('./libs/validate');
+  addMixin (key, callback) {
+    this[key] = callback;
+  }
+
+};
 
 require('./mixins/misc');
 require('./mixins/parse');
 require('./mixins/validate');
 
-module.exports = {
-
-  addMixin: mixins.add,
-  compose,
-  parse,
-  pick,
-  mapKeys,
-  validate
-
-};
+module.exports.compose = require('./libs/compose');
+module.exports.mapKeys = require('./libs/mapKeys');
+module.exports.parse = require('./libs/parse');
+module.exports.pick = require('./libs/pick');
+module.exports.run = require('./libs/run');
+module.exports.validate = require('./libs/validate');

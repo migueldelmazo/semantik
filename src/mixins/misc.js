@@ -1,8 +1,8 @@
 const
 
   _ = require('lodash'),
-  mixins = require('../libs/mixins');
+  semantik = require('../index');
 
-mixins.add('getObjType', (value) => {
+semantik.addMixin('getObjType', (value) => {
   return _.isArray(value) ? [] : {};
 });

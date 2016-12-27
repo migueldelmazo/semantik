@@ -2,55 +2,20 @@ const
 
   _ = require('lodash'),
 
-  mixins = require('./mixins'),
+  semantik = require('../index'),
 
   ensureSemantikAttrs = (attrs) => {
     return _.reduce(attrs, (attrsObj, callbacks, key) => {
-      attrsObj[key] = _.reduce(mixins.list.parseArray(callbacks), (callbacksArr, callback) => {
-        if (_.isString(callback) && mixins.exists(callback)) {
-          // check if is a function of this library
-          callbacksArr.push({ cb: mixins.list[callback] });
-        } else if (_.isPlainObject(callback)) {
-          // check if is a plain object
-          callbacksArr.push({
-            cb: getCallback(callback.cb),
-            params: callback.params,
-            ctx: callback.ctx
-          });
-        } else if (_.isFunction(callback)) {
-          // check if is a function
-          callbacksArr.push({ cb: callback });
-        }
+      attrsObj[key] = _.reduce(semantik.parseArray(callbacks), (callbacksArr, callback) => {
+        callbacksArr.push(callback);
         return callbacksArr;
       }, []);
       return attrsObj;
     }, {});
-  },
-
-  getCallback = (callback) => {
-    return _.isString(callback) && mixins.exists(callback)
-      ? mixins.list[callback]
-      : callback;
-  },
-
-  runCallback = (callback, value) => {
-    const params = getParams(value, callback.params);
-    return callback.cb.apply(callback.ctx, params);
-  },
-
-  getParams = (value, params) => {
-    if (_.isArray(params)) {
-      return [value].concat(params);
-    } else if (params !== undefined) {
-      return [value, params];
-    } else {
-      return [value];
-    }
   };
 
 module.exports = {
 
-  ensureSemantikAttrs,
-  runCallback
+  ensureSemantikAttrs
 
 };

@@ -3,10 +3,13 @@ const semantik = require('../src/index'),
 
   inc = (value) => value + 1,
 
-  reverseWords = (words) => words.
+  reverseWords = (words) => {
+    debugger;
+    return words.
     split(' ').
     reverse().
-    join(' '),
+    join(' ');
+  },
 
   sourceObject = {
     products: [

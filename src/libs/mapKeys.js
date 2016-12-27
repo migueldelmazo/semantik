@@ -1,8 +1,8 @@
 const
 
   _ = require('lodash'),
+  semantik = require('../index'),
   compose = require('./compose'),
-  mixins = require('./mixins'),
 
   mapKeys = (obj, transformObj) => {
     return _.transform(compose(obj, transformObj), (result, composedValue, composedKey) => {
@@ -10,7 +10,7 @@ const
         matched = composedKey.match(transformKeyRegex),
         newKey = mapKeysGetNewKey(matched, composedValue);
       _.set(result, newKey, _.get(obj, composedKey));
-    }, mixins.list.getObjType(obj));
+    }, semantik.getObjType(obj));
   },
 
   mapKeysFindRegex = (composedKey, transformObj) => {
