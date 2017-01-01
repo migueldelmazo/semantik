@@ -26,7 +26,9 @@ var source = {
 Returns an object whose keys are a string with the full path of the properties of the object `source`. The values are the same as the values of the object `semantik`.
 
 ```javascript
-semantik.compose(source, { 'products[].name': 'some name', 'products[].units': 'some units' });
+semantik.compose(source, {
+  'products[].name': 'some name', 'products[].units': 'some units'
+});
 // {
 //   'products[0].name': 'some name',
 //   'products[1].name': 'some name'
@@ -69,19 +71,31 @@ semantik.parse(source, { 'products[].units': parseInt });
 
 ####Functions of object `semantik`:
 
-* The values of object `semantik` can be a function or an array of functions:
-  * `{ 'products[].units': 'isString' }`
-  * `{ 'products[].units': ['isString', 'isNotEmpty'] }`
-* The functions of object `semantic` can be a real function or the name of a function of this library:
-  * `{ 'products[].units': _.isString }`
-  * `{ 'products[].units': 'isString' }`
-* To pass parameters to the function you can use an object:
-  * `{ 'products[].units': [ { cb: isNumberBetween, params: [5, 25] ] } }` // isNumberBetween will receive the parameters: 'value', 5 and 25
-  * `{ 'products[].units': [ { cb: isNumberBetween, params: { min: 5, max: 25 } } ] }` // isNumberBetween will receive the parameters: 'value' and { min: 5, max: 25 }
-  * `{ 'products[].units': [ { cb: isNumberGreatThan, params: 5 } ] }` // isNumberGreatThan will receive the parameters: 'value' and 5
-* To pass a context to the function you can use an object:
-  * `{ 'products[].units': [ { cb: sort, ctx: this } ]`
-* All functions of object `semantik` receive as first parameter the value of object `source`.
+The values of object `semantik` can be a function or an array of functions:
+```javascript
+{ 'products[].units': 'isString' }
+{ 'products[].units': ['isString', 'isNotEmpty'] }
+```
+
+The functions of object `semantic` can be a real function or the name of a function of this library:
+```javascript
+{ 'products[].units': 'isString' }
+{ 'products[].units': _.isString }
+```
+
+To pass parameters to the function you can use an object:
+```javascript
+{ 'products[].units': [ { cb: isNumberBetween, params: [5, 25] ] } } // isNumberBetween will receive the parameters: 'value', 5 and 25
+{ 'products[].units': [ { cb: isNumberBetween, params: { min: 5, max: 25 } } ] } // isNumberBetween will receive the parameters: 'value' and { min: 5, max: 25 }
+{ 'products[].units': [ { cb: isNumberGreatThan, params: 5 } ] } // isNumberGreatThan will receive the parameters: 'value' and 5
+```
+
+To pass a context to the function you can use an object:
+```javascript
+{ 'products[].units': [ { cb: sort, ctx: this } ]
+```
+
+All functions of object `semantik` receive as first parameter the value of object `source`.
 
 ####Parse helpers:
 
