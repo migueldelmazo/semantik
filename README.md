@@ -25,39 +25,47 @@ var source = {
 ####semantik.compose(source, semantik);
 Returns an object whose keys are a string with the full path of the properties of the object `source`. The values are the same as the values of the object `semantik`.
 
-    semantik.compose(source, { 'products[].name': 'some name', 'products[].units': 'some units' });
-    // {
-    //   'products[0].name': 'some name',
-    //   'products[1].name': 'some name'
-    //   'products[0].units': 'some units',
-    //   'products[1].units': 'some units'
-    // }
+```javascript
+semantik.compose(source, { 'products[].name': 'some name', 'products[].units': 'some units' });
+// {
+//   'products[0].name': 'some name',
+//   'products[1].name': 'some name'
+//   'products[0].units': 'some units',
+//   'products[1].units': 'some units'
+// }
+```
 
 ####semantik.validate(source, semantik);
 Returns `true` if all functions of the object `semantik` returns `true`, when the functions receive as parameter the values of the object `source`. Otherwise it returns `false`. The functions of object `semantik` must return a boolean value.
 
-    semantik.validate(source, { 'products[].name': 'isString' });
-    // true
+```javascript
+semantik.validate(source, { 'products[].name': 'isString' });
+// true
+```
 
 You can use the pseudo-method `isRequired` to ensure that a property exists on the object `source`.
 
-    semantik.validate(source, { 'products[].asdf': 'isRequired' });
-    // false
+```javascript
+semantik.validate(source, { 'products[].asdf': 'isRequired' });
+// false
+```
 
 ####semantik.parse(source, semantik);
 Returns a copy of the object `source`, modified by the functions of the object `semantik`. The functions of object `semantik` must return a value.
 
-    semantik.parse(source, { 'products[].units': parseInt });
-    // {
-    //   products: [{
-    //     name: 'Node JS Design Patterns',
-    //     units: 5
-    //   },
-    //   {
-    //     name: 'T-Shirts NodeJS',
-    //     units: 10
-    //   }]
-    // }
+```javascript
+semantik.parse(source, { 'products[].units': parseInt });
+// {
+//   products: [{
+//     name: 'Node JS Design Patterns',
+//     units: 5
+//   },
+//   {
+//     name: 'T-Shirts NodeJS',
+//     units: 10
+//   }]
+// }
+```
 
 ####Functions of object `semantik`:
 
@@ -77,41 +85,49 @@ Returns a copy of the object `source`, modified by the functions of the object `
 
 ####Parse helpers:
 
-`semantik.parseString(value)`
+```javascript
+semantik.parseString(value)
+```
 
 ####Validate helpers:
 
-`semantik.isEmail(value)`
+```javascript
+semantik.isEmail(value)
 
-`semantik.isNotEmpty(value)`
+semantik.isNotEmpty(value)
 
-`semantik.isNumberGreatThan(value, min, equal = true)`
+semantik.isNumberGreatThan(value, min, equal = true)
 
-`semantik.isNumberLessThan(value, max, equal = true)`
+semantik.isNumberLessThan(value, max, equal = true)
 
-`semantik.isNumberBetween(value, min, max, equal = true)`
+semantik.isNumberBetween(value, min, max, equal = true)
 
-`semantik.isStringNotEmpty(value)`
+semantik.isStringNotEmpty(value)
 
-`semantik.isStringNumber(value)`
+semantik.isStringNumber(value)
+```
 
 ####Lodash methods:
 
-`semantik.parseCamelCase(value)`
+```javascript
+semantik.parseCamelCase(value)
 
-`semantik.isArray(value)`
+semantik.isArray(value)
 
-`semantik.isEmpty(value)`
+semantik.isEmpty(value)
 
-`semantik.isNumber(value)`
+semantik.isNumber(value)
 
-`semantik.isString(value)`
+semantik.isString(value)
+```
 
 ####semantik.mixin({ name: method });
 Add new functions to this library, so that they can be used in any time.
 
+```javascript
     semantik.mixin({ isString: _.isString });
     semantik.validate(source, { 'products[].units': 'isString' });
+```
 
 ##When is it useful:
 For example this library is useful to validate and parse the JSON that are received and sent from a server, in order to ensure that the input and output of an application are correct.
