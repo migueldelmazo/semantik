@@ -57,7 +57,7 @@ const semantik = require('../src/index'),
       },
       {
         cb: 'isNumberGreatThan',
-        params: [5, false]
+        params: [5, true]
       },
       {
         cb: 'isNumberLessThan',
@@ -65,7 +65,7 @@ const semantik = require('../src/index'),
       },
       {
         cb: 'isNumberLessThan',
-        params: [25, false]
+        params: [25, true]
       },
       {
         cb: 'isNumberBetween',
