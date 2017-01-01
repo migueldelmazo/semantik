@@ -139,8 +139,8 @@ semantik.isString(value)
 Add new functions to this library, so that they can be used in any time.
 
 ```javascript
-    semantik.mixin({ isString: _.isString });
-    semantik.validate(source, { 'products[].units': 'isString' });
+semantik.mixin({ isString: _.isString });
+semantik.validate(source, { 'products[].units': 'isString' });
 ```
 
 ##When is it useful:
