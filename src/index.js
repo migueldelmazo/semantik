@@ -1,7 +1,11 @@
 module.exports = {
 
   addMixin (key, callback) {
-    this[key] = callback;
+    if (this[key]) {
+      throw new Error('Semantik error: There is already a mixin with the name "' + key + '"');
+    } else {
+      this[key] = callback;
+    }
   }
 
 };
