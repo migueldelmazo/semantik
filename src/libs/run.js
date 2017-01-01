@@ -4,12 +4,10 @@ const
   semantik = require('../index'),
 
   getParams = (args, params) => {
-    let _args = args;
-    if (_.isArray(params) || params !== undefined) {
-      return _args.concat(params);
-    } else {
-      return _args;
-    }
+    const _args = args;
+    return _.isArray(params) || params !== undefined
+      ? _args.concat(params)
+      : _args;
   },
 
   run = (callback, ...args) => {

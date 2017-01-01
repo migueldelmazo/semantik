@@ -14,8 +14,4 @@ const
     }, {});
   };
 
-module.exports = {
-
-  ensureSemantikAttrs
-
-};
+module.exports = { ensureSemantikAttrs };
