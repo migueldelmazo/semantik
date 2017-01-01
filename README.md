@@ -3,12 +3,13 @@
 
 #SemantiK
 
-This is a library to iterate over arrays and objects semantically, assigning values, validating and parsing. From an object, JSON or array we can create another object using a declarative and semantic function.
+This is a library to iterate over arrays and objects semantically, assigning values, validating and parsing. From an object, JSON or array we can create another object using a declarative and semantic programming.
 
 ##How does it work:
 
 From this JSON:
 
+```javascript
     var source = {
       products: [{
         name: 'Node JS Design Patterns',
@@ -19,6 +20,7 @@ From this JSON:
         units: '10'
       }]
     };
+```
 
 ####semantik.compose(source, semantik);
 Returns an object whose keys are a string with the full path of the properties of the object `source`. The values are the same as the values of the object `semantik`.
