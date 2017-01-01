@@ -6,11 +6,11 @@ const
 
 semantik.addMixin('isNotEmpty', (value) => !_.isEmpty(value));
 
-semantik.addMixin('isNumberGreatThan', (value, min, equal) => {
+semantik.addMixin('isNumberGreatThan', (value, min, equal = false) => {
   return equal === false ? min < value : min <= value;
 });
 
-semantik.addMixin('isNumberLessThan', (value, max, equal) => {
+semantik.addMixin('isNumberLessThan', (value, max, equal = false) => {
   return equal === false ? max > value : max >= value;
 });
 
