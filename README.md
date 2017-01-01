@@ -10,16 +10,16 @@ This is a library to iterate over arrays and objects semantically, assigning val
 From this JSON:
 
 ```javascript
-    var source = {
-      products: [{
-        name: 'Node JS Design Patterns',
-        units: '5'
-      },
-      {
-        name: 'T-Shirts NodeJS',
-        units: '10'
-      }]
-    };
+var source = {
+  products: [{
+    name: 'Node JS Design Patterns',
+    units: '5'
+  },
+  {
+    name: 'T-Shirts NodeJS',
+    units: '10'
+  }]
+};
 ```
 
 ####semantik.compose(source, semantik);
