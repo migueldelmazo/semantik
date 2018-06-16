@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "node"
+  - "6"
+addons:
+    code_climate:
+        repo_token: af6f764347f0efb90a1990fad8aa9808da72ec4beba3a58220838788b08feaa9
+    sonarcloud:
+        organization: "migueldelmazo-github"
+script:
+  - sonar-scanner -Dsonar.projectKey=Semantik -Dsonar.sources=.
