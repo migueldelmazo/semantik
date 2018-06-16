@@ -1,5 +1,7 @@
 'use strict';
 
+lol
+
 var _ = require('lodash'),
 
   // compose methos
