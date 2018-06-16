@@ -8,4 +8,4 @@ addons:
     sonarcloud:
         organization: "migueldelmazo-github"
 script:
-    - sonar-scanner
+  - sonar-scanner -d sonar.projectKey=Semantik -d sonar.sources=.
