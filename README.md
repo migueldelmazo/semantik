@@ -1,4 +1,4 @@
-#SemantiK
+# SemantiK
 
 This is a library to iterate over arrays and objects semantically, assigning values, validating and parsing. From an object, JSON or array we can create another object using a declarative and semantic function.
 
@@ -17,7 +17,7 @@ From this JSON:
       }]
     };
 
-####semantik.compose(source, semantik);
+#### semantik.compose(source, semantik);
 Returns an object whose keys are a string with the full path of the properties of the object `source`. The values are the same as the values of the object `semantik`.
 
     semantik.compose(source, { 'products[].name': 'some name', 'products[].units': 'some units' });
@@ -28,7 +28,7 @@ Returns an object whose keys are a string with the full path of the properties o
     //   'products[1].units': 'some units'
     // }
 
-####semantik.validate(source, semantik);
+#### semantik.validate(source, semantik);
 Returns `true` if all functions of the object `semantik` returns `true`, when the functions receive as parameter the values of the object `source`. Otherwise it returns `false`. The functions of object `semantik` must return a boolean value.
 
     semantik.validate(source, { 'products[].name': 'isString' });
@@ -39,7 +39,7 @@ You can use the pseudo-method `isRequired` to ensure that a property exists on t
     semantik.validate(source, { 'products[].asdf': 'isRequired' });
     // false
 
-####semantik.parse(source, semantik);
+#### semantik.parse(source, semantik);
 Returns a copy of the object `source`, modified by the functions of the object `semantik`. The functions of object `semantik` must return a value.
 
     semantik.parse(source, { 'products[].units': parseInt });
@@ -54,7 +54,7 @@ Returns a copy of the object `source`, modified by the functions of the object `
     //   }]
     // }
 
-####Functions of object `semantik`:
+#### Functions of object `semantik`:
 
 * The values of object `semantik` can be a function or an array of functions:
   * `{ 'products[].units': 'isString' }`
@@ -70,11 +70,11 @@ Returns a copy of the object `source`, modified by the functions of the object `
   * `{ 'products[].units': [ { cb: sort, ctx: this } ]`
 * All functions of object `semantik` receive as first parameter the value of object `source`.
 
-####Parse helpers:
+#### Parse helpers:
 
 `semantik.parseString(value)`
 
-####Validate helpers:
+#### Validate helpers:
 
 `semantik.isEmail(value)`
 
@@ -90,7 +90,7 @@ Returns a copy of the object `source`, modified by the functions of the object `
 
 `semantik.isStringNumber(value)`
 
-####Lodash methods:
+#### Lodash methods:
 
 `semantik.parseCamelCase(value)`
 
@@ -104,17 +104,17 @@ Returns a copy of the object `source`, modified by the functions of the object `
 
 `semantik.isString(value)`
 
-####semantik.mixin({ name: method });
+#### semantik.mixin({ name: method });
 Add new functions to this library, so that they can be used in any time.
 
     semantik.mixin({ isString: _.isString });
     semantik.validate(source, { 'products[].units': 'isString' });
 
-##When is it useful:
+## When is it useful:
 For example this library is useful to validate and parse the JSON that are received and sent from a server, in order to ensure that the input and output of an application are correct.
 
-##Examples:
+## Examples:
 Look at the folder `examples/` to see how easy it is to use this library.
 
-##Tests:
+## Tests:
 Coming soon...
