@@ -2,7 +2,7 @@
 
 This is a library to iterate over arrays and objects semantically, assigning values, validating and parsing. From an object, JSON or array we can create another object using a declarative and semantic function.
 
-##How does it work:
+## How does it work:
 
 From this JSON:
 
